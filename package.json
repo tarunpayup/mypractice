@@ -1,0 +1,11 @@
+{
+  "name": "mypractice",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Helper scripts for deploying this project to a DigitalOcean Droplet.",
+  "scripts": {
+    "droplet:ssh": "ssh ${DROPLET_USER:-root}@${DROPLET_HOST}",
+    "droplet:sync": "rsync -az --delete --exclude .venv --exclude __pycache__ ./ ${DROPLET_USER:-root}@${DROPLET_HOST}:${APP_DIR:-/opt/mypractice}/",
+    "droplet:run": "ssh ${DROPLET_USER:-root}@${DROPLET_HOST} 'cd ${APP_DIR:-/opt/mypractice} && python3 app.py'"
+  }
+}
